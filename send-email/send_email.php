@@ -30,9 +30,15 @@
 		$query = "INSERT INTO ms_email(to, header, bodyMessage) VALUES('".$to."','".$subject."','".$bodyMessage."')";
 
 		$data = $conn->query($query);
-		$return = 'true';
+		$return = [
+			'status' => 00,
+			'message' => 'email has been sent successfully'
+		];
 	} else{
-		$return = 'false';
+		$return = [
+			'status' => 01,
+			'message' => 'failed to send email'
+		];
 	}
 
 	echo json_encode($return);
